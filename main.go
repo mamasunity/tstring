@@ -16,6 +16,6 @@ func Center(str string, length int, pad string) string {
 			rightPadding++
 		}
 
-		return strings.Repeat(" ", leftPadding) + str + strings.Repeat(" ", rightPadding)
+		return strings.Repeat(pad, leftPadding)[:leftPadding] + str + strings.Repeat(pad, rightPadding)[:rightPadding]
 	}
 }
