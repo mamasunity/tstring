@@ -4,6 +4,7 @@ import (
 	"strings"
 )
 
+// Center make string centerd.
 func Center(str string, length int, pad string) string {
 	if len(str) >= length {
 		return str
@@ -20,6 +21,11 @@ func Center(str string, length int, pad string) string {
 	}
 }
 
+// ExpandTabs replace from tab to some space.
 func ExpandTabs(str string, tabSize int) string {
 	return strings.ReplaceAll(str, "\t", strings.Repeat(" ", tabSize))
+}
+
+func main() {
+	// DO NOT IMPLEMENT
 }
