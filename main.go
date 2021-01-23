@@ -19,3 +19,7 @@ func Center(str string, length int, pad string) string {
 		return strings.Repeat(pad, leftPadding)[:leftPadding] + str + strings.Repeat(pad, rightPadding)[:rightPadding]
 	}
 }
+
+func ExpandTabs(str string, tabSize int) string {
+	return strings.ReplaceAll(str, "\t", strings.Repeat(" ", tabSize))
+}
