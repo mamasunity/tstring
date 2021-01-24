@@ -45,6 +45,17 @@ func Insert(dst string, src string, index int) string {
 	return dst[:index] + src + dst[index:]
 }
 
+// LastPartition partition by separator.
+func LastPartition(str string, sep string) (head string, match string, tail string) {
+	index := strings.LastIndex(str, sep)
+
+	if index == -1 {
+		return str, "", ""
+	}
+
+	return str[0:index], sep, str[index+1:]
+}
+
 func main() {
 	// DO NOT IMPLEMENT
 }

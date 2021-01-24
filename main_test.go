@@ -34,3 +34,15 @@ func TestInsert(t *testing.T) {
 
 	assert.Panics(t, func() { Insert("abc", "A", 10) }, "Index must be included range.")
 }
+
+func TestLastPartition(t *testing.T) {
+	head, match, tail := LastPartition("hello", "l")
+	assert.Equal(t, "hel", head)
+	assert.Equal(t, "l", match)
+	assert.Equal(t, "o", tail)
+
+	head, match, tail = LastPartition("hello", "x")
+	assert.Equal(t, "hello", head)
+	assert.Equal(t, "", match)
+	assert.Equal(t, "", tail)
+}
