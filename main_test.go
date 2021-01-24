@@ -46,3 +46,9 @@ func TestLastPartition(t *testing.T) {
 	assert.Equal(t, "", match)
 	assert.Equal(t, "", tail)
 }
+
+func TestLeftJustify(t *testing.T) {
+	assert.Equal(t, "hello", LeftJustify("hello", 4, " "))
+	assert.Equal(t, "hello     ", LeftJustify("hello", 10, " "))
+	assert.Equal(t, "hello12312", LeftJustify("hello", 10, "123"))
+}

@@ -56,6 +56,15 @@ func LastPartition(str string, sep string) (head string, match string, tail stri
 	return str[0:index], sep, str[index+1:]
 }
 
+// LeftJustify justify left side.
+func LeftJustify(str string, length int, pad string) string {
+	if len(str) >= length {
+		return str
+	}
+
+	return str + strings.Repeat(pad, length)[:length-len(str)]
+}
+
 func main() {
 	// DO NOT IMPLEMENT
 }
