@@ -52,3 +52,15 @@ func TestLeftJustify(t *testing.T) {
 	assert.Equal(t, "hello     ", LeftJustify("hello", 10, " "))
 	assert.Equal(t, "hello12312", LeftJustify("hello", 10, "123"))
 }
+
+func TestPartition(t *testing.T) {
+	head, match, tail := Partition("hello", "l")
+	assert.Equal(t, "he", head)
+	assert.Equal(t, "l", match)
+	assert.Equal(t, "lo", tail)
+
+	head, match, tail = Partition("hello", "x")
+	assert.Equal(t, "hello", head)
+	assert.Equal(t, "", match)
+	assert.Equal(t, "", tail)
+}

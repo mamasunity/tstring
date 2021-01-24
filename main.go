@@ -65,6 +65,17 @@ func LeftJustify(str string, length int, pad string) string {
 	return str + strings.Repeat(pad, length)[:length-len(str)]
 }
 
+// Partition partition by separator.
+func Partition(str string, sep string) (head string, match string, tail string) {
+	index := strings.Index(str, sep)
+
+	if index == -1 {
+		return str, "", ""
+	}
+
+	return str[0:index], sep, str[index+1:]
+}
+
 func main() {
 	// DO NOT IMPLEMENT
 }
