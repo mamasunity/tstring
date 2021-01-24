@@ -7,35 +7,35 @@ import (
 )
 
 func TestCenter1(t *testing.T) {
-	assert.Equal(t, Center("hello", 4, " "), "hello")
+	assert.Equal(t, "hello", Center("hello", 4, " "))
 }
 
 func TestCenter2(t *testing.T) {
-	assert.Equal(t, Center("hello", 10, " "), "  hello   ")
+	assert.Equal(t, "  hello   ", Center("hello", 10, " "))
 }
 
 func TestCenter3(t *testing.T) {
-	assert.Equal(t, Center("hello", 10, "123"), "12hello123")
+	assert.Equal(t, "12hello123", Center("hello", 10, "123"))
 }
 
 func TestExpandTabs1(t *testing.T) {
-	assert.Equal(t, ExpandTabs("a\tbc\tdef", 4), "a    bc    def")
+	assert.Equal(t, "a    bc    def", ExpandTabs("a\tbc\tdef", 4))
 }
 
 func TestExpandTabs2(t *testing.T) {
-	assert.Equal(t, ExpandTabs("a\tbc\tdef", 2), "a  bc  def")
+	assert.Equal(t, "a  bc  def", ExpandTabs("a\tbc\tdef", 2))
 }
 
 func TestExpandTabs3(t *testing.T) {
-	assert.Equal(t, ExpandTabs("中\t文", 4), "中    文")
+	assert.Equal(t, "中    文", ExpandTabs("中\t文", 4))
 }
 
 func TestFirstRuneLower1(t *testing.T) {
-	assert.Equal(t, FirstRuneToLower("ABC"), "aBC")
+	assert.Equal(t, "aBC", FirstRuneToLower("ABC"))
 }
 
 func TestFirstRuneLower2(t *testing.T) {
-	assert.Equal(t, FirstRuneToLower("abcde"), "abcde")
+	assert.Equal(t, "abc", FirstRuneToLower("abc"))
 }
 
 func TestFirstRuneToUpper1(t *testing.T) {
