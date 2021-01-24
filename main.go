@@ -40,6 +40,11 @@ func FirstRuneToUpper(str string) string {
 	return strings.ToUpper(str[:1]) + str[1:]
 }
 
+// Insert is insertion on index position.
+func Insert(dst string, src string, index int) string {
+	return dst[:index] + src + dst[index:]
+}
+
 func main() {
 	// DO NOT IMPLEMENT
 }

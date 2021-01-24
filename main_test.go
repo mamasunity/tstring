@@ -45,3 +45,15 @@ func TestFirstRuneToUpper1(t *testing.T) {
 func TestFirstRuneToUpper2(t *testing.T) {
 	assert.Equal(t, "ABC", FirstRuneToUpper("ABC"))
 }
+
+func TestInsert1(t *testing.T) {
+	assert.Equal(t, "Aabc", Insert("abc", "A", 0))
+}
+
+func TestInsert2(t *testing.T) {
+	assert.Equal(t, "aAbc", Insert("abc", "A", 1))
+}
+
+func TestInsert3(t *testing.T) {
+	assert.Panics(t, func() { Insert("abc", "A", 10) }, "Index must be included range.")
+}
