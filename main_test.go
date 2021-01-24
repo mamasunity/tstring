@@ -2,76 +2,38 @@ package main
 
 import (
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestCenter1(t *testing.T) {
-	expect := "hello"
-	actual := Center("hello", 4, " ")
-
-	if expect != actual {
-		t.Errorf("\"%s\"!=\"%s\"", expect, actual)
-	}
+	assert.Equal(t, Center("hello", 4, " "), "hello")
 }
 
 func TestCenter2(t *testing.T) {
-	expect := "  hello   "
-	actual := Center("hello", 10, " ")
-
-	if expect != actual {
-		t.Errorf("\"%s\"!=\"%s\"", expect, actual)
-	}
+	assert.Equal(t, Center("hello", 10, " "), "  hello   ")
 }
 
 func TestCenter3(t *testing.T) {
-	expect := "12hello123"
-	actual := Center("hello", 10, "123")
-
-	if expect != actual {
-		t.Errorf("\"%s\"!=\"%s\"", expect, actual)
-	}
+	assert.Equal(t, Center("hello", 10, "123"), "12hello123")
 }
 
 func TestExpandTabs1(t *testing.T) {
-	expect := "a    bc    def"
-	actual := ExpandTabs("a\tbc\tdef", 4)
-
-	if expect != actual {
-		t.Errorf("\"%s\"!=\"%s\"", expect, actual)
-	}
+	assert.Equal(t, ExpandTabs("a\tbc\tdef", 4), "a    bc    def")
 }
 
 func TestExpandTabs2(t *testing.T) {
-	expect := "a  bc  def"
-	actual := ExpandTabs("a\tbc\tdef", 2)
-
-	if expect != actual {
-		t.Errorf("\"%s\"!=\"%s\"", expect, actual)
-	}
+	assert.Equal(t, ExpandTabs("a\tbc\tdef", 2), "a  bc  def")
 }
 
 func TestExpandTabs3(t *testing.T) {
-	expect := "中    文"
-	actual := ExpandTabs("中\t文", 4)
-
-	if expect != actual {
-		t.Errorf("\"%s\"!=\"%s\"", expect, actual)
-	}
+	assert.Equal(t, ExpandTabs("中\t文", 4), "中    文")
 }
 
 func TestFirstRuneLower1(t *testing.T) {
-	expect := "aBC"
-	actual := FirstRuneToLower("ABC")
-
-	if expect != actual {
-		t.Errorf("\"%s\"!=\"%s\"", expect, actual)
-	}
+	assert.Equal(t, FirstRuneToLower("ABC"), "aBC")
 }
 
 func TestFirstRuneLower2(t *testing.T) {
-	expect := "abcde"
-	actual := FirstRuneToLower("abcde")
-
-	if expect != actual {
-		t.Errorf("\"%s\"!=\"%s\"", expect, actual)
-	}
+	assert.Equal(t, FirstRuneToLower("abcde"), "abcde")
 }
