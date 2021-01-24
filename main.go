@@ -87,6 +87,15 @@ func Reverse(str string) string {
 	return reversedString
 }
 
+// RightJustify justify left side.
+func RightJustify(str string, length int, pad string) string {
+	if len(str) >= length {
+		return str
+	}
+
+	return strings.Repeat(pad, length)[:length-len(str)] + str
+}
+
 func main() {
 	// DO NOT IMPLEMENT
 }

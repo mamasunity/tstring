@@ -68,3 +68,9 @@ func TestPartition(t *testing.T) {
 func TestReverse(t *testing.T) {
 	assert.Equal(t, "desserts", Reverse("stressed"))
 }
+
+func TestRightJustify(t *testing.T) {
+	assert.Equal(t, "hello", RightJustify("hello", 4, " "))
+	assert.Equal(t, "     hello", RightJustify("hello", 10, " "))
+	assert.Equal(t, "12312hello", RightJustify("12312hello", 10, "123"))
+}
