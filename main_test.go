@@ -37,3 +37,11 @@ func TestFirstRuneLower1(t *testing.T) {
 func TestFirstRuneLower2(t *testing.T) {
 	assert.Equal(t, FirstRuneToLower("abcde"), "abcde")
 }
+
+func TestFirstRuneToUpper1(t *testing.T) {
+	assert.Equal(t, "ABC", FirstRuneToUpper("aBC"))
+}
+
+func TestFirstRuneToUpper2(t *testing.T) {
+	assert.Equal(t, "ABC", FirstRuneToUpper("ABC"))
+}

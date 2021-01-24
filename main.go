@@ -35,6 +35,11 @@ func FirstRuneToLower(str string) string {
 	return strings.ToLower(str[:1]) + str[1:]
 }
 
+// FirstRuneToUpper returns first rune upper string when rune is alphabet.
+func FirstRuneToUpper(str string) string {
+	return strings.ToUpper(str[:1]) + str[1:]
+}
+
 func main() {
 	// DO NOT IMPLEMENT
 }
