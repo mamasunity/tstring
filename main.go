@@ -76,6 +76,17 @@ func Partition(str string, sep string) (head string, match string, tail string) 
 	return str[0:index], sep, str[index+1:]
 }
 
+// Reverse reverse string.
+func Reverse(str string) string {
+	reversedString := ""
+
+	for i := len(str) - 1; i >= 0; i-- {
+		reversedString += string(str[i])
+	}
+
+	return reversedString
+}
+
 func main() {
 	// DO NOT IMPLEMENT
 }

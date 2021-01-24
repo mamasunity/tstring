@@ -64,3 +64,7 @@ func TestPartition(t *testing.T) {
 	assert.Equal(t, "", match)
 	assert.Equal(t, "", tail)
 }
+
+func TestReverse(t *testing.T) {
+	assert.Equal(t, "desserts", Reverse("stressed"))
+}
