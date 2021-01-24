@@ -30,6 +30,11 @@ func ExpandTabs(str string, tabSize int) string {
 	return strings.ReplaceAll(str, "\t", strings.Repeat(" ", tabSize))
 }
 
+// FirstRuneToLower returns first rune lower string when rune is alphabet.
+func FirstRuneToLower(str string) string {
+	return strings.ToLower(str[:1]) + str[1:len(str)]
+}
+
 func main() {
 	// DO NOT IMPLEMENT
 }

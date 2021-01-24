@@ -9,7 +9,7 @@ func TestCenter1(t *testing.T) {
 	actual := Center("hello", 4, " ")
 
 	if expect != actual {
-		t.Errorf("\"%s \"!=\"%s\"", expect, actual)
+		t.Errorf("\"%s\"!=\"%s\"", expect, actual)
 	}
 }
 
@@ -18,7 +18,7 @@ func TestCenter2(t *testing.T) {
 	actual := Center("hello", 10, " ")
 
 	if expect != actual {
-		t.Errorf("\"%s \"!=\"%s\"", expect, actual)
+		t.Errorf("\"%s\"!=\"%s\"", expect, actual)
 	}
 }
 
@@ -27,7 +27,7 @@ func TestCenter3(t *testing.T) {
 	actual := Center("hello", 10, "123")
 
 	if expect != actual {
-		t.Errorf("\"%s \"!=\"%s\"", expect, actual)
+		t.Errorf("\"%s\"!=\"%s\"", expect, actual)
 	}
 }
 
@@ -36,7 +36,7 @@ func TestExpandTabs1(t *testing.T) {
 	actual := ExpandTabs("a\tbc\tdef", 4)
 
 	if expect != actual {
-		t.Errorf("\"%s \"!=\"%s\"", expect, actual)
+		t.Errorf("\"%s\"!=\"%s\"", expect, actual)
 	}
 }
 
@@ -45,7 +45,7 @@ func TestExpandTabs2(t *testing.T) {
 	actual := ExpandTabs("a\tbc\tdef", 2)
 
 	if expect != actual {
-		t.Errorf("\"%s \"!=\"%s\"", expect, actual)
+		t.Errorf("\"%s\"!=\"%s\"", expect, actual)
 	}
 }
 
@@ -54,6 +54,24 @@ func TestExpandTabs3(t *testing.T) {
 	actual := ExpandTabs("中\t文", 4)
 
 	if expect != actual {
-		t.Errorf("\"%s \"!=\"%s\"", expect, actual)
+		t.Errorf("\"%s\"!=\"%s\"", expect, actual)
+	}
+}
+
+func TestFirstRuneLower1(t *testing.T) {
+	expect := "aBC"
+	actual := FirstRuneToLower("ABC")
+
+	if expect != actual {
+		t.Errorf("\"%s\"!=\"%s\"", expect, actual)
+	}
+}
+
+func TestFirstRuneLower2(t *testing.T) {
+	expect := "abcde"
+	actual := FirstRuneToLower("abcde")
+
+	if expect != actual {
+		t.Errorf("\"%s\"!=\"%s\"", expect, actual)
 	}
 }
