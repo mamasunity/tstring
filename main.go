@@ -2,6 +2,7 @@ package main
 
 import (
 	"strings"
+	"unicode"
 )
 
 // Center make string centerd.
@@ -94,6 +95,24 @@ func RightJustify(str string, length int, pad string) string {
 	}
 
 	return strings.Repeat(pad, length)[:length-len(str)] + str
+}
+
+// SwapCase convert from lower to upper or upper or lower.
+func SwapCase(str string) string {
+	runeStr := []rune(str)
+	returnedStr := ""
+
+	for i := 0; i < len(runeStr); i++ {
+		if unicode.IsUpper(runeStr[i]) {
+			returnedStr += strings.ToLower(string(runeStr[i]))
+		} else if unicode.IsLower(runeStr[i]) {
+			returnedStr += strings.ToUpper(string(runeStr[i]))
+		} else {
+			returnedStr += string(runeStr[i])
+		}
+	}
+
+	return returnedStr
 }
 
 func main() {

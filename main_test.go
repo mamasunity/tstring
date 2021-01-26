@@ -74,3 +74,7 @@ func TestRightJustify(t *testing.T) {
 	assert.Equal(t, "     hello", RightJustify("hello", 10, " "))
 	assert.Equal(t, "12312hello", RightJustify("12312hello", 10, "123"))
 }
+
+func TestSwapCase(t *testing.T) {
+	assert.Equal(t, "Ab", SwapCase("aB"))
+}
