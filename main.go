@@ -1,4 +1,4 @@
-package main
+package tstring
 
 import (
 	"strings"
@@ -113,8 +113,4 @@ func SwapCase(str string) string {
 	}
 
 	return returnedStr
-}
-
-func main() {
-	// DO NOT IMPLEMENT
 }
