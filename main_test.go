@@ -7,62 +7,139 @@ import (
 )
 
 func TestCenter(t *testing.T) {
-	assert.Equal(t, "hello", Center("hello", 4, " "))
-	assert.Equal(t, "  hello   ", Center("hello", 10, " "))
-	assert.Equal(t, "12hello123", Center("hello", 10, "123"))
+	cases := []struct {
+		expect string
+		str    string
+		length int
+		pad    string
+	}{
+		{expect: "hello", str: "hello", length: 4, pad: " "},
+		{expect: "  hello   ", str: "hello", length: 10, pad: " "},
+		{expect: "12hello123", str: "hello", length: 10, pad: "123"},
+	}
+
+	for _, c := range cases {
+		assert.Equal(t, c.expect, Center(c.str, c.length, c.pad))
+	}
 }
 
 func TestExpandTabs(t *testing.T) {
-	assert.Equal(t, "a    bc    def", ExpandTabs("a\tbc\tdef", 4))
-	assert.Equal(t, "a  bc  def", ExpandTabs("a\tbc\tdef", 2))
-	assert.Equal(t, "中    文", ExpandTabs("中\t文", 4))
+	cases := []struct {
+		expect  string
+		str     string
+		tabSize int
+	}{
+		{expect: "a    bc    def", str: "a\tbc\tdef", tabSize: 4},
+		{expect: "a  bc  def", str: "a\tbc\tdef", tabSize: 2},
+		{expect: "中    文", str: "中\t文", tabSize: 4},
+	}
+
+	for _, c := range cases {
+		assert.Equal(t, c.expect, ExpandTabs(c.str, c.tabSize))
+	}
 }
 
 func TestFirstRuneLower(t *testing.T) {
-	assert.Equal(t, "aBC", FirstRuneToLower("ABC"))
-	assert.Equal(t, "abc", FirstRuneToLower("abc"))
+	cases := []struct {
+		expect string
+		str    string
+	}{
+		{expect: "aBC", str: "ABC"},
+		{expect: "abc", str: "abc"},
+	}
+
+	for _, c := range cases {
+		assert.Equal(t, c.expect, FirstRuneToLower(c.str))
+	}
 }
 
 func TestFirstRuneToUpper(t *testing.T) {
-	assert.Equal(t, "ABC", FirstRuneToUpper("aBC"))
-	assert.Equal(t, "ABC", FirstRuneToUpper("ABC"))
+	cases := []struct {
+		expect string
+		str    string
+	}{
+		{expect: "ABC", str: "aBC"},
+		{expect: "ABC", str: "ABC"},
+	}
+
+	for _, c := range cases {
+		assert.Equal(t, c.expect, FirstRuneToUpper(c.str))
+	}
 }
 
 func TestInsert(t *testing.T) {
-	assert.Equal(t, "Aabc", Insert("abc", "A", 0))
-	assert.Equal(t, "aAbc", Insert("abc", "A", 1))
+	cases := []struct {
+		expect string
+		dst    string
+		src    string
+		index  int
+	}{
+		{expect: "Aabc", dst: "abc", src: "A", index: 0},
+		{expect: "aAbc", dst: "abc", src: "A", index: 1},
+	}
+
+	for _, c := range cases {
+		assert.Equal(t, c.expect, Insert(c.dst, c.src, c.index))
+	}
 
 	assert.Panics(t, func() { Insert("abc", "A", 10) }, "Index must be included range.")
 }
 
 func TestLastPartition(t *testing.T) {
-	head, match, tail := LastPartition("hello", "l")
-	assert.Equal(t, "hel", head)
-	assert.Equal(t, "l", match)
-	assert.Equal(t, "o", tail)
+	cases := []struct {
+		expectedHead  string
+		expectedMatch string
+		expectedTail  string
+		str           string
+		sep           string
+	}{
+		{expectedHead: "hel", expectedMatch: "l", expectedTail: "o", str: "hello", sep: "l"},
+		{expectedHead: "hello", expectedMatch: "", expectedTail: "", str: "hello", sep: "x"},
+	}
 
-	head, match, tail = LastPartition("hello", "x")
-	assert.Equal(t, "hello", head)
-	assert.Equal(t, "", match)
-	assert.Equal(t, "", tail)
+	for _, c := range cases {
+		head, match, tail := LastPartition(c.str, c.sep)
+		assert.Equal(t, c.expectedHead, head)
+		assert.Equal(t, c.expectedMatch, match)
+		assert.Equal(t, c.expectedTail, tail)
+	}
 }
 
 func TestLeftJustify(t *testing.T) {
-	assert.Equal(t, "hello", LeftJustify("hello", 4, " "))
-	assert.Equal(t, "hello     ", LeftJustify("hello", 10, " "))
-	assert.Equal(t, "hello12312", LeftJustify("hello", 10, "123"))
+	cases := []struct {
+		expect string
+		str    string
+		length int
+		pad    string
+	}{
+		{expect: "hello", str: "hello", length: 4, pad: " "},
+		{expect: "hello     ", str: "hello", length: 10, pad: " "},
+		{expect: "hello12312", str: "hello", length: 10, pad: "123"},
+	}
+
+	for _, c := range cases {
+		assert.Equal(t, c.expect, LeftJustify(c.str, c.length, c.pad))
+	}
 }
 
 func TestPartition(t *testing.T) {
-	head, match, tail := Partition("hello", "l")
-	assert.Equal(t, "he", head)
-	assert.Equal(t, "l", match)
-	assert.Equal(t, "lo", tail)
+	cases := []struct {
+		expectedHead  string
+		expectedMatch string
+		expectedTail  string
+		str           string
+		sep           string
+	}{
+		{expectedHead: "he", expectedMatch: "l", expectedTail: "lo", str: "hello", sep: "l"},
+		{expectedHead: "hello", expectedMatch: "", expectedTail: "", str: "hello", sep: "x"},
+	}
 
-	head, match, tail = Partition("hello", "x")
-	assert.Equal(t, "hello", head)
-	assert.Equal(t, "", match)
-	assert.Equal(t, "", tail)
+	for _, c := range cases {
+		head, match, tail := Partition(c.str, c.sep)
+		assert.Equal(t, c.expectedHead, head)
+		assert.Equal(t, c.expectedMatch, match)
+		assert.Equal(t, c.expectedTail, tail)
+	}
 }
 
 func TestReverse(t *testing.T) {
@@ -70,9 +147,20 @@ func TestReverse(t *testing.T) {
 }
 
 func TestRightJustify(t *testing.T) {
-	assert.Equal(t, "hello", RightJustify("hello", 4, " "))
-	assert.Equal(t, "     hello", RightJustify("hello", 10, " "))
-	assert.Equal(t, "12312hello", RightJustify("12312hello", 10, "123"))
+	cases := []struct {
+		expect string
+		str    string
+		length int
+		pad    string
+	}{
+		{expect: "hello", str: "hello", length: 4, pad: " "},
+		{expect: "     hello", str: "hello", length: 10, pad: " "},
+		{expect: "12312hello", str: "hello", length: 10, pad: "123"},
+	}
+
+	for _, c := range cases {
+		assert.Equal(t, c.expect, RightJustify(c.str, c.length, c.pad))
+	}
 }
 
 func TestSwapCase(t *testing.T) {
